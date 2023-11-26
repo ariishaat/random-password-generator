@@ -40,18 +40,29 @@ def randomPass(n, special):
     
 
 # with User input:
-def noPuncs():
+def isSpecial():
     '''
     noPuncs() takes user input and converts input to Boolean
 
     noPuncs: None -> Bool
     '''
-    special = input("Special characters accepted?: ")
-    if special == "Yes":
-        return True
-    if special == "No":
-        return False
+    while True:
+        special = input("Special characters accepted? (y or n): ")
+        if special == "y":
+            return True
+        elif special == "n":
+            return False
+        else:
+            print("Please enter 'Yes' or 'No'.")
+
+def generatePass():
+    '''
+    Takes user's input to generate a random password
+
+    '''
+    n = int(input("Enter password length: "))
+    password = randomPass(n, isSpecial())
+    print(password)
 
 
-n = int(input("Enter password length: "))
-randomPass(n, noPuncs())
+generatePass()
